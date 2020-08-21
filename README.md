@@ -29,7 +29,10 @@ kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storagec
 ```
 
 ## Github token authentication
+
+```
 kubectl apply -f  ../config/github-authn.yaml
+```
 
 # Work in progress, use at your own risk.....
 
