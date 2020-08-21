@@ -28,6 +28,8 @@ Set default storage class
 kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
 
+## Github token authentication
+kubectl apply -f  ../config/github-authn.yaml
 
 # Work in progress, use at your own risk.....
 
