@@ -3,7 +3,7 @@
 - python virtualenv
 - vagrant
 
-## Steps:
+## Installation
 Initialize kubespray submodule
 ```
 git submodule init  && git submodule update
