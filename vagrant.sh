@@ -9,7 +9,7 @@ pip install -r requirements.txt
 export INV=inventory/my_lab
 rm -rf ${INV}.bak &> /dev/null
 mv ${INV} ${INV}.bak &> /dev/null
-cp -a ../kube_vars ${INV}
+cp -a kube_vars ${INV}
 rm -f ${INV}/hosts.ini
 
 # customize the vagrant environment
@@ -21,6 +21,7 @@ cat << EOF > vagrant/config.rb
 \$subnet = "10.0.20"
 \$network_plugin = "calico"
 \$inventory = "$INV"
+\$playbook = "kubespray/cluster.yml"
 EOF
 
 

@@ -10,8 +10,7 @@ git submodule init  && git submodule update
 ```
 Run the commands from kubespray directory. The vagrant file comes with kubespray. The vars are custom.
 ```
-cd kubespray
-sh ../vagrant.sh
+sh vagrant.sh
 ```
 # Storage
 
@@ -31,36 +30,27 @@ kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storagec
 ## Github token authentication
 
 ```
-kubectl apply -f  ../config/github-authn.yaml
+kubectl apply -f config/github-authn.yaml
 ```
 
-# Work in progress, use at your own risk.....
+```
+githubUsername=<githubUserID>
 
-## Install Rook storage
+cat << EOF > rbac-cluster-admin.yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: $githubUsername
+EOF
 
-**Add rook repo**
-```
-helm repo add rook-release https://charts.rook.io/release
-```
-**Create rook namespace**
-
-```
-kubectl create ns rook-ceph
-```
-
-**Install rook**
-
-```
-helm install --namespace rook-ceph rook-ceph rook-release/rook-ceph
-```
-
-**Create rook cluster**
-```
-kubectl apply -f rook/cluster/examples/kubernetes/ceph/cluster.yaml
+kubectl apply -f rbac-cluster-admin.yml
 ```
 
-**Create storage class**
-
-```
-kubectl apply -f rook/cluster/examples/kubernetes/ceph/storageclass-bucket-delete.yaml
-```
