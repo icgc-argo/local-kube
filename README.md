@@ -12,6 +12,8 @@ Run the install script
 ```
 sh vagrant.sh
 ```
+When this script finishes, the kubernetes cluster should be up and running and accessible with the kube config in artifact directory
+
 # Storage
 
 
