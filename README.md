@@ -8,7 +8,7 @@ Initialize submodules
 ```
 git submodule init && git submodule update
 ```
-Run the commands from kubespray directory. The vagrant file comes with kubespray. The vars are custom.
+
 ```
 sh vagrant.sh
 ```
