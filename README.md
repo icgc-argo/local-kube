@@ -8,7 +8,7 @@ Initialize submodules
 ```
 git submodule init && git submodule update
 ```
-
+Run the install script
 ```
 sh vagrant.sh
 ```
