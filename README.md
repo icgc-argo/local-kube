@@ -37,7 +37,9 @@ kubectl apply -f config/github-authn.yaml
 
 ```
 githubUsername=<githubUserID>
+```
 
+```
 cat << EOF > rbac-cluster-admin.yml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
